@@ -1,0 +1,114 @@
+### Experiment configuration
+
+## General settings
+split: 'test' # data split; choices ['train', 'test']
+debug: false # if true, load only a few data samples
+seed: 999
+validation: false # use validation; only for UBnormal
+use_hr: false # for validation and test on UBnormal
+
+## Computational resources
+accelerator: 'gpu'
+devices: [3] # indices of cuda devices to use
+
+## Paths
+dir_name: 'test_experiment' # name of the directory of the current experiment
+data_dir: './data/HR-Avenue/' # path to the data
+exp_dir: './checkpoints' # path to the directory that will contain the current experiment directory
+test_path: './data/HR-Avenue/testing/test_frame_mask' # path to the test data
+load_ckpt: 'best.ckpt' # name of the checkpoint to load at inference time
+create_experiment_dir: false # if true, create a new directory for the current experiment
+
+## WANDB configuration
+use_wandb: false
+project_name: "project_name"
+wandb_entity: "entity_name"
+group_name: "group_name"
+use_ema: false
+
+##############################
+
+
+### Model's configuration
+
+## U-Net's configuration
+dropout: 0. # probability of dropout
+conditioning_strategy: 'inject'
+## Rec configuration
+h_dim: 512 # dimension of the bottleneck at the end of the encoder of the conditioning network
+latent_dim: 256 # dimension of the latent space of the conditioning encoder
+channels: [512,256,512] # channels for the encoder
+
+##############################
+
+
+### Training's configuration
+
+## Diffusion's configuration
+noise_steps: 10 # how many diffusion steps to perform
+
+### Optimizer and scheduler's configuration
+n_epochs: 50
+opt_lr: 0.001
+
+## Losses' configuration
+loss_fn: 'smooth_l1' # loss function; choices ['mse', 'l1', 'smooth_l1']
+
+##############################
+
+
+### Inference's configuration
+n_generated_samples: 50 # number of samples to generate
+model_return_value: 'loss' # choices ['loss', 'poses', 'all']; if 'loss', the model will return the loss;
+                           # if 'poses', the model will return the generated poses; 
+                           # if 'all', the model will return both the loss and the generated poses
+aggregation_strategy: 'best' # choices ['best', 'mean', 'median', 'random']; if 'best', the best sample will be selected; 
+                             # if 'mean', the mean of loss of the samples will be selected; 
+                             # if 'median', the median of the loss of the samples will be selected; 
+                             # if 'random', a random sample will be selected;
+                             # if 'mean_poses', the mean of the generated poses will be selected;
+                             # if 'median_poses', the median of the generated poses will be selected;
+                             # if 'all', all the generated poses will be selected
+filter_kernel_size: 30 # size of the kernel to use for smoothing the anomaly score of each clip
+frames_shift: 6 # it compensates the shift of the anomaly score due to the sliding window; 
+                # in conjuction with pad_size and filter_kernel_size, it strongly depends on the dataset
+save_tensors: true # if true, save the generated tensors for faster inference
+load_tensors: false # if true, load the generated tensors for faster inference
+
+##############################
+
+
+### Dataset's configuration
+
+## Important parameters
+dataset_choice: 'HR-Avenue'
+seg_len: 7 # length of the window (cond+noised)
+vid_res: [640,360]
+batch_size: 4096
+pad_size: 12 # size of the padding
+
+## Other parameters
+headless: false # remove the keypoints of the head
+hip_center: false # center the keypoints on the hip
+kp18_format: false # use the 18 keypoints format
+normalization_strategy: 'robust' # use 'none' to avoid normalization, 'robust' otherwise
+num_coords: 2 # number of coordinates to use
+num_transform: 5 # number of transformations to apply
+num_workers: 8
+seg_stride: 1
+seg_th: 0
+start_offset: 0
+symm_range: true
+use_fitted_scaler: false
+
+## New configuration
+n_his: 3
+padding: 'LastFrame'
+## translinear configuration
+num_layers: 6
+num_heads: 8
+latent_dims: 512
+loss_1_series_weight: 0.01
+loss_1_prior_weight: 0
+loss_2_series_weight: 0
+loss_2_prior_weight: 0.01
