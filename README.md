@@ -75,6 +75,8 @@ Test MoCoDAD
 python eval_DCMD.py --config config/[Avenue/STC/UBnormal]/{config_name}.yaml
 ```
 
+The checkpoints for the pretrained models can be found [GDRive](https://drive.google.com/drive/folders/1vvJv66-hi9D7DJKZGlzQzRhN0aYcwP05).
+
 ## Reference
 If our paper and code are helpful to you, please cite our article in the paper.
 
