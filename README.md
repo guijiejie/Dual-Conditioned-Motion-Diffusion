@@ -77,4 +77,5 @@ python eval_DCMD.py --config config/[Avenue/STC/UBnormal]/{config_name}.yaml
 
 ## Reference
 If our paper and code are helpful to you, please cite our article in the paper.
+
 Dual Conditioned Motion Diffusion for Pose-Based Video Anomaly Detection by Andi Xu, Hongsong Wang, Pinle Ding, Jie Gui.
