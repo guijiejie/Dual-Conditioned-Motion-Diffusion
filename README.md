@@ -77,7 +77,15 @@ python eval_DCMD.py --config config/[Avenue/STC/UBnormal]/{config_name}.yaml
 
 The checkpoints for the pretrained models can be found [GDRive](https://drive.google.com/drive/folders/1vvJv66-hi9D7DJKZGlzQzRhN0aYcwP05).
 
-## Reference
-If our paper and code are helpful to you, please cite our article in the paper.
-
-Dual Conditioned Motion Diffusion for Pose-Based Video Anomaly Detection by Andi Xu, Hongsong Wang, Pinle Ding, Jie Gui.
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{dualcondition25,
+  title={Dual Conditioned Motion Diffusion for Pose-Based Video Anomaly Detection},
+  author={Andi Xu, Hongsong Wang, Pinle Ding and Jie Gui},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  year={2025}
+}
+</code></pre>
+  </div>
+</section>
