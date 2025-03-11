@@ -82,7 +82,7 @@ The checkpoints for the pretrained models can be found [GDRive](https://drive.go
     <h2 class="title">BibTeX</h2>
     <pre><code>@inproceedings{dualcondition25,
   title={Dual Conditioned Motion Diffusion for Pose-Based Video Anomaly Detection},
-  author={Andi Xu, Hongsong Wang, Pinle Ding and Jie Gui},
+  author={Hongsong Wang, Andi Xu, Pinle Ding and Jie Gui},
   booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
   year={2025}
 }
